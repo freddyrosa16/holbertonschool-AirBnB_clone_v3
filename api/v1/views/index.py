@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-""" Index of views"""
-
-
+""" Index """
 from models.amenity import Amenity
 from models.city import City
 from models.place import Place
