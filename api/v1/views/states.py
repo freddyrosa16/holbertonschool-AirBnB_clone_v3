@@ -60,3 +60,13 @@ def update_state(state_id):
             setattr(state, key, value)
     state.save()
     return jsonify(state.to_dict())
+
+@app_views.route('/states/<state_id>', methods=['DELETE'], strict_slashes=False)
+def delete_state(state_id):
+    """Delete a specific State object"""
+    state = storage.get(State, state_id)
+    if state is None:
+        abort(404)
+    state.delete()
+    storage.save()
+    return make_response(jsonify({}), 200)
